@@ -10,8 +10,6 @@ Laravel backend API for Pettable app :)
 
 ## Features
 
-List the main features of your web app here. For example:
-
 - Raise a pet
 - Put it to work
 - Profit
