@@ -8,7 +8,7 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans p-6">
   <div class="max-w-3xl mx-auto">
-    <h1 class="text-3xl font-bold mb-6 text-blue-600">🔧 Git Workflow Guide for Students</h1>
+    <h1 class="text-3xl font-bold mb-6 text-blue-600">🔧 Git Workflow Guide</h1>
 
     <section class="mb-8">
       <h2 class="text-2xl font-semibold text-gray-700 mb-2">1. Create a Branch</h2>
