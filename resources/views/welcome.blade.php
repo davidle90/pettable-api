@@ -52,11 +52,18 @@
         <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
             <main class="">
                 <h1>Pettable API :)</h1>
-                <ul class="mt-2">
+                <ul class="flex gap-4">
                     <li>
-                        <a href="/docs" class="text-blue-500 border px-2 py-1 hover:text-blue-600">Documentation</a>
+                      <a href="/docs" class="text-blue-500 border px-2 py-1 hover:text-blue-600">
+                        Documentation
+                      </a>
                     </li>
-                </ul>
+                    <li>
+                      <a href="/workflow-guide" class="text-green-500 border px-2 py-1 hover:text-green-600">
+                        Workflow guide
+                      </a>
+                    </li>
+                  </ul>
             </main>
         </div>
 
