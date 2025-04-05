@@ -37,7 +37,7 @@ Instructions for installing and setting up the project locally.
     - Install PHP dependencies:
 
     ```bash
-    composer install
+    composer update
     ```
 
     - Install Node.js dependencies (if your project uses front-end assets):
