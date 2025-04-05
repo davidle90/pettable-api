@@ -5,7 +5,7 @@ namespace App\Http\Resources\V1;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserResource extends JsonResource
+class PetResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,22 +15,24 @@ class UserResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'type' => 'user',
+            'type' => 'pet',
             'id' => $this->id,
             'attributes' => [
                 'referenceId' => $this->reference_id,
                 'name' => $this->name,
-                'email' => $this->email,
-                'isAdmin' => $this->is_admin,
-                'emailVerifiedAt' => $this->email_verified_at,
+                'hunger' => $this->hunger,
+                'happiness' => $this->happiness,
+                'energy' => $this->energy,
+                'isAlive' => $this->is_alive,
+                'lastUpdated' => $this->last_updated,
                 'createdAt' => $this->created_at,
                 'updatedAt' => $this->updated_at
             ],
             'includes' => [
-                //'groups' => GroupResource::collection($this->whenLoaded('groups')),
+                'user' => UserResource::collection($this->whenLoaded('owner')),
             ],
             'links' => [
-                'self' => route('users.show', ['user' => $this->id])
+                'self' => route('pets.show', ['pet' => $this->id])
             ]
         ];
     }

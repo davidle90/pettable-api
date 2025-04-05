@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Api\V1;
+namespace App\Http\Requests\Api\V1\Pet;
 
-class UpdateUserRequest extends BaseUserRequest
+class UpdatePetRequest extends BasePetRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,8 +21,12 @@ class UpdateUserRequest extends BaseUserRequest
     {
         return [
             'data.attributes.name' => 'sometimes|string',
-            'data.attributes.password' => 'sometimes|string',
-            'data.attributes.reference_id' => 'prohibited'
+            'data.attributes.hunger' => 'sometimes|integer',
+            'data.attributes.happiness' => 'sometimes|integer',
+            'data.attributes.energy' => 'sometimes|integer',
+            'data.attributes.isAlive' => 'sometimes|boolean',
+            'data.attributes.user_id' => 'sometimes|integer',
+            'data.attributes.referenceId' => 'prohibited'
         ];
     }
 }

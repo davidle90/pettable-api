@@ -13,6 +13,12 @@ final class Abilities {
     public const UpdateOwnUser = 'user:own:update';
     public const DeleteOwnUser = 'user:own:delete';
 
+    // PET
+    public const CreatePet = 'pet:create';
+    public const UpdatePet = 'pet:update';
+    public const DeletePet = 'pet:delete';
+    public const UpdateOwnPet = 'pet:own:update';
+    public const DeleteOwnPet = 'pet:own:delete';
 
     public static function getAbilities(User $user) {
 
@@ -21,11 +27,16 @@ final class Abilities {
                 self::CreateUser,
                 self::UpdateUser,
                 self::DeleteUser,
+                self::CreatePet,
+                self::UpdatePet,
+                self::DeletePet,
             ];
         } else {
             return [
                 self::UpdateOwnUser,
                 self::DeleteOwnUser,
+                self::UpdateOwnPet,
+                self::DeleteOwnPet,
             ];
         }
     }
