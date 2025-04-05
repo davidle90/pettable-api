@@ -51,19 +51,24 @@
         </header>
         <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
             <main class="">
-                <h1>Pettable API :)</h1>
+                <h1 class="text-3xl font-semibold text-center mb-5">Pettable API :)</h1>
                 <ul class="flex gap-4">
                     <li>
-                      <a href="/docs" class="text-blue-500 border px-2 py-1 hover:text-blue-600">
-                        Documentation
-                      </a>
+                        <a href="/docs" class="text-blue-500 border px-2 py-1 hover:text-blue-600 hover:bg-blue-50">
+                            Documentation
+                        </a>
                     </li>
                     <li>
-                      <a href="/workflow-guide" class="text-green-500 border px-2 py-1 hover:text-green-600">
-                        Workflow guide
-                      </a>
+                        <a href="/workflow-guide" class="text-green-500 border px-2 py-1 hover:text-green-600 hover:bg-green-50">
+                            Workflow guide
+                        </a>
                     </li>
-                  </ul>
+                    <li>
+                        <a href="/testing" class="text-purple-500 border px-2 py-1 hover:text-purple-600 hover:bg-purple-50">
+                            Testing guide
+                        </a>
+                    </li>
+                </ul>
             </main>
         </div>
 
