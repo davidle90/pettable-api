@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('pets', function (Blueprint $table) {
             $table->id();
+            $table->string('reference_id')->nullable();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->string('name');
             $table->integer('hunger')->default(100);
