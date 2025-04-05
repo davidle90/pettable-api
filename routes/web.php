@@ -8,4 +8,8 @@ Route::get('/', function () {
 
 Route::get('/workflow-guide', function () {
     return view('workflow_guide');
-});
+})->name('workflow_guide');
+
+Route::get('/testing', function () {
+    return view('testing');
+})->name('testing');;

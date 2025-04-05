@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Pettable API</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -20,9 +20,9 @@
         @endif
     </head>
     <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
-        <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
+        <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6">
             @if (Route::has('login'))
-                <nav class="flex items-center justify-end gap-4">
+                <nav class="flex items-center justify-between lg:justify-end gap-4">
                     @auth
                         <a
                             href="{{ url('/dashboard') }}"
@@ -50,22 +50,27 @@
             @endif
         </header>
         <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
-            <main class="">
+            <main class="w-full px-4">
                 <h1 class="text-3xl font-semibold text-center mb-5">Pettable API :)</h1>
-                <ul class="flex gap-4">
+                <ul class="flex flex-wrap justify-center gap-4">
                     <li>
-                        <a href="/docs" class="text-blue-500 border px-2 py-1 hover:text-blue-600 hover:bg-blue-50">
+                        <a href="/docs" class="text-blue-500 border px-4 py-2 rounded-md hover:text-blue-600 hover:bg-blue-50">
                             Documentation
                         </a>
                     </li>
                     <li>
-                        <a href="/workflow-guide" class="text-green-500 border px-2 py-1 hover:text-green-600 hover:bg-green-50">
+                        <a href="{{ route('workflow_guide') }}" class="text-green-500 border px-4 py-2 rounded-md hover:text-green-600 hover:bg-green-50">
                             Workflow guide
                         </a>
                     </li>
                     <li>
-                        <a href="/testing" class="text-purple-500 border px-2 py-1 hover:text-purple-600 hover:bg-purple-50">
+                        <a href="{{ route('testing') }}" class="text-purple-500 border px-4 py-2 rounded-md hover:text-purple-600 hover:bg-purple-50">
                             Testing guide
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/davidle90/pettable-api" class="text-gray-500 border px-4 py-2 rounded-md hover:text-gray-600 hover:bg-gray-50">
+                            Github
                         </a>
                     </li>
                 </ul>
