@@ -16,6 +16,22 @@ class AuthController extends Controller
 {
     use ApiResponses;
 
+    /**
+     * Log in a user
+     *
+     * This endpoint allows a user to log in with their email and password.
+     *
+     * @group Authentication
+     * @bodyParam email string required The user's email. Example: user@example.com
+     * @bodyParam password string required The user's password. Example: secret
+     * @response 200 {
+     *   "token": "eyJ0eXAiOiJKV1QiLCJh...",
+     *   "user": {
+     *     "id": 1,
+     *     "name": "John Doe"
+     *   }
+     * }
+     */
     public function login(LoginUserRequest $request)
     {
         $request->validated($request->all());
@@ -38,6 +54,10 @@ class AuthController extends Controller
         );
     }
 
+    /**
+     * Register
+     * @group Authentication
+     */
     public function register(Request $request)
     {
         $request->validate([
@@ -63,7 +83,10 @@ class AuthController extends Controller
         ]);
     }
 
-
+    /**
+     * Logout
+     * @group Authentication
+     */
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();

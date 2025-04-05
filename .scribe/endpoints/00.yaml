@@ -1,4 +1,4 @@
-name: Endpoints
+name: Authentication
 description: ''
 endpoints:
   -
@@ -6,12 +6,12 @@ endpoints:
       - POST
     uri: api/login
     metadata:
-      groupName: Endpoints
+      groupName: Authentication
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: ''
-      description: ''
+      title: 'Log in a user'
+      description: 'This endpoint allows a user to log in with their email and password.'
       authenticated: false
       custom: []
     headers:
@@ -24,29 +24,42 @@ endpoints:
     bodyParameters:
       email:
         name: email
-        description: 'Must be a valid email address.'
+        description: "The user's email."
         required: true
-        example: gbailey@example.net
+        example: user@example.com
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
       password:
         name: password
-        description: 'Must be at least 8 characters.'
+        description: "The user's password."
         required: true
-        example: '+-0pBNvYgxwmi/#iw'
+        example: secret
         type: string
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
         custom: []
     cleanBodyParameters:
-      email: gbailey@example.net
-      password: '+-0pBNvYgxwmi/#iw'
+      email: user@example.com
+      password: secret
     fileParameters: []
-    responses: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "token": "eyJ0eXAiOiJKV1QiLCJh...",
+            "user": {
+              "id": 1,
+              "name": "John Doe"
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
     responseFields: []
     auth: []
     controller: null
@@ -58,11 +71,11 @@ endpoints:
       - POST
     uri: api/register
     metadata:
-      groupName: Endpoints
+      groupName: Authentication
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: ''
+      title: Register
       description: ''
       authenticated: false
       custom: []
@@ -121,11 +134,11 @@ endpoints:
       - POST
     uri: api/logout
     metadata:
-      groupName: Endpoints
+      groupName: Authentication
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: ''
+      title: Logout
       description: ''
       authenticated: false
       custom: []
@@ -138,327 +151,6 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters: []
     cleanBodyParameters: []
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: api/v1/users
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Display a listing of the resource.'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 401
-        content: '{"message":"Unauthenticated."}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/v1/users
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Store a newly created resource in storage.'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      data.attributes:
-        name: data.attributes
-        description: ''
-        required: false
-        example: []
-        type: object
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      data:
-        name: data
-        description: ''
-        required: false
-        example: []
-        type: object
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      data.attributes.name:
-        name: data.attributes.name
-        description: ''
-        required: true
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      data.attributes.email:
-        name: data.attributes.email
-        description: 'Must be a valid email address.'
-        required: true
-        example: zbailey@example.net
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      data.attributes.isAdmin:
-        name: data.attributes.isAdmin
-        description: ''
-        required: true
-        example: true
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      data.attributes.password:
-        name: data.attributes.password
-        description: ''
-        required: true
-        example: '|]|{+-'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      data:
-        attributes:
-          name: architecto
-          email: zbailey@example.net
-          isAdmin: true
-          password: '|]|{+-'
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/v1/users/{id}'
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Display the specified resource.'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the user.'
-        required: true
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: architecto
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 401
-        content: '{"message":"Unauthenticated."}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - DELETE
-    uri: 'api/v1/users/{id}'
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Remove the specified resource from storage.'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the user.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - PATCH
-    uri: 'api/v1/users/{user_id}'
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Update the specified resource in storage.'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      user_id:
-        name: user_id
-        description: 'The ID of the user.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      user_id: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      data.attributes:
-        name: data.attributes
-        description: ''
-        required: false
-        example: []
-        type: object
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      data:
-        name: data
-        description: ''
-        required: false
-        example: []
-        type: object
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      data.attributes.name:
-        name: data.attributes.name
-        description: ''
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      data.attributes.password:
-        name: data.attributes.password
-        description: ''
-        required: false
-        example: '|]|{+-'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      data.attributes.reference_id:
-        name: data.attributes.reference_id
-        description: ''
-        required: false
-        example: null
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      data:
-        attributes:
-          name: architecto
-          password: '|]|{+-'
     fileParameters: []
     responses: []
     responseFields: []

@@ -13,7 +13,11 @@ use Illuminate\Support\Facades\Gate;
 class UserController extends ApiController
 {
     /**
-     * Display a listing of the resource.
+     * Get all users
+     * @group Managing Users
+     * @queryParam sort string Data field(s) to sort by. Separate multiple fields with commas. Denote descending sort with minus sign. Example: sort=title,-createdAt
+     * @queryParam filter[status] Filter by status code: A, C, H, X. No-example
+     * @queryParam filter[title] Filter by title. Wildards are supported. Example: *fix*
      */
     public function index(UserFilter $filters)
     {
@@ -21,7 +25,9 @@ class UserController extends ApiController
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Create user
+     *
+     * @group Managing Users
      */
     public function store(StoreUserRequest $request)
     {
@@ -34,7 +40,9 @@ class UserController extends ApiController
     }
 
     /**
-     * Display the specified resource.
+     * Display user
+     *
+     * @group Managing Users
      */
     public function show($reference_id)
     {
@@ -52,7 +60,9 @@ class UserController extends ApiController
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update user
+     *
+     * @group Managing Users
      */
     public function update(UpdateUserRequest $request, User $user)
     {
@@ -65,7 +75,9 @@ class UserController extends ApiController
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete user
+     *
+     * @group Managing Users
      */
     public function destroy(User $user)
     {

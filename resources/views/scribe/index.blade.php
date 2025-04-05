@@ -66,34 +66,41 @@
                     <a href="#authenticating-requests">Authenticating requests</a>
                 </li>
                             </ul>
-                    <ul id="tocify-header-endpoints" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="endpoints">
-                    <a href="#endpoints">Endpoints</a>
+                    <ul id="tocify-header-authentication" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="authentication">
+                    <a href="#authentication">Authentication</a>
                 </li>
-                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-login">
-                                <a href="#endpoints-POSTapi-login">POST api/login</a>
+                                    <ul id="tocify-subheader-authentication" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="authentication-POSTapi-login">
+                                <a href="#authentication-POSTapi-login">Log in a user</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-register">
-                                <a href="#endpoints-POSTapi-register">POST api/register</a>
+                                                                                <li class="tocify-item level-2" data-unique="authentication-POSTapi-register">
+                                <a href="#authentication-POSTapi-register">Register</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-logout">
-                                <a href="#endpoints-POSTapi-logout">POST api/logout</a>
+                                                                                <li class="tocify-item level-2" data-unique="authentication-POSTapi-logout">
+                                <a href="#authentication-POSTapi-logout">Logout</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-users">
-                                <a href="#endpoints-GETapi-v1-users">Display a listing of the resource.</a>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-managing-users" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="managing-users">
+                    <a href="#managing-users">Managing Users</a>
+                </li>
+                                    <ul id="tocify-subheader-managing-users" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="managing-users-GETapi-v1-users">
+                                <a href="#managing-users-GETapi-v1-users">Get all users</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v1-users">
-                                <a href="#endpoints-POSTapi-v1-users">Store a newly created resource in storage.</a>
+                                                                                <li class="tocify-item level-2" data-unique="managing-users-POSTapi-v1-users">
+                                <a href="#managing-users-POSTapi-v1-users">Create user</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-users--id-">
-                                <a href="#endpoints-GETapi-v1-users--id-">Display the specified resource.</a>
+                                                                                <li class="tocify-item level-2" data-unique="managing-users-GETapi-v1-users--id-">
+                                <a href="#managing-users-GETapi-v1-users--id-">Display user</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-v1-users--id-">
-                                <a href="#endpoints-DELETEapi-v1-users--id-">Remove the specified resource from storage.</a>
+                                                                                <li class="tocify-item level-2" data-unique="managing-users-DELETEapi-v1-users--id-">
+                                <a href="#managing-users-DELETEapi-v1-users--id-">Delete user</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-PATCHapi-v1-users--user_id-">
-                                <a href="#endpoints-PATCHapi-v1-users--user_id-">Update the specified resource in storage.</a>
+                                                                                <li class="tocify-item level-2" data-unique="managing-users-PATCHapi-v1-users--user_id-">
+                                <a href="#managing-users-PATCHapi-v1-users--user_id-">Update user</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -125,16 +132,16 @@ You can switch the language used with the tabs at the top right (or from the nav
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>This API is not authenticated.</p>
 
-        <h1 id="endpoints">Endpoints</h1>
+        <h1 id="authentication">Authentication</h1>
 
     
 
-                                <h2 id="endpoints-POSTapi-login">POST api/login</h2>
+                                <h2 id="authentication-POSTapi-login">Log in a user</h2>
 
 <p>
 </p>
 
-
+<p>This endpoint allows a user to log in with their email and password.</p>
 
 <span id="example-requests-POSTapi-login">
 <blockquote>Example request:</blockquote>
@@ -146,8 +153,8 @@ You can switch the language used with the tabs at the top right (or from the nav
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"gbailey@example.net\",
-    \"password\": \"+-0pBNvYgxwmi\\/#iw\"
+    \"email\": \"user@example.com\",
+    \"password\": \"secret\"
 }"
 </code></pre></div>
 
@@ -163,8 +170,8 @@ const headers = {
 };
 
 let body = {
-    "email": "gbailey@example.net",
-    "password": "+-0pBNvYgxwmi\/#iw"
+    "email": "user@example.com",
+    "password": "secret"
 };
 
 fetch(url, {
@@ -176,7 +183,20 @@ fetch(url, {
 </span>
 
 <span id="example-responses-POSTapi-login">
-</span>
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJh...&quot;,
+    &quot;user&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;John Doe&quot;
+    }
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-POSTapi-login" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-login"></span>:
@@ -253,10 +273,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-login"
-               value="gbailey@example.net"
+               value="user@example.com"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>gbailey@example.net</code></p>
+<p>The user's email. Example: <code>user@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -264,14 +284,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-login"
-               value="+-0pBNvYgxwmi/#iw"
+               value="secret"
                data-component="body">
     <br>
-<p>Must be at least 8 characters. Example: <code>+-0pBNvYgxwmi/#iw</code></p>
+<p>The user's password. Example: <code>secret</code></p>
         </div>
         </form>
 
-                    <h2 id="endpoints-POSTapi-register">POST api/register</h2>
+                    <h2 id="authentication-POSTapi-register">Register</h2>
 
 <p>
 </p>
@@ -426,7 +446,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="endpoints-POSTapi-logout">POST api/logout</h2>
+                    <h2 id="authentication-POSTapi-logout">Logout</h2>
 
 <p>
 </p>
@@ -534,7 +554,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="endpoints-GETapi-v1-users">Display a listing of the resource.</h2>
+                <h1 id="managing-users">Managing Users</h1>
+
+    
+
+                                <h2 id="managing-users-GETapi-v1-users">Get all users</h2>
 
 <p>
 </p>
@@ -547,7 +571,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://pettable.test/api/v1/users" \
+    --get "http://pettable.test/api/v1/users?sort=sort%3Dtitle%2C-createdAt&amp;filter%5Btitle%5D=%2Afix%2A" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -556,6 +580,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <pre><code class="language-javascript">const url = new URL(
     "http://pettable.test/api/v1/users"
 );
+
+const params = {
+    "sort": "sort=title,-createdAt",
+    "filter[title]": "*fix*",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
     "Content-Type": "application/json",
@@ -656,9 +687,43 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
-                        </form>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="sort"                data-endpoint="GETapi-v1-users"
+               value="sort=title,-createdAt"
+               data-component="query">
+    <br>
+<p>Data field(s) to sort by. Separate multiple fields with commas. Denote descending sort with minus sign. Example: <code>sort=title,-createdAt</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>filter[status]</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="filter[status]"                data-endpoint="GETapi-v1-users"
+               value=""
+               data-component="query">
+    <br>
+<p>Filter by status code: A, C, H, X.</p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>filter[title]</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="filter[title]"                data-endpoint="GETapi-v1-users"
+               value="*fix*"
+               data-component="query">
+    <br>
+<p>Filter by title. Wildards are supported. Example: <code>*fix*</code></p>
+            </div>
+                </form>
 
-                    <h2 id="endpoints-POSTapi-v1-users">Store a newly created resource in storage.</h2>
+                    <h2 id="managing-users-POSTapi-v1-users">Create user</h2>
 
 <p>
 </p>
@@ -866,7 +931,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="endpoints-GETapi-v1-users--id-">Display the specified resource.</h2>
+                    <h2 id="managing-users-GETapi-v1-users--id-">Display user</h2>
 
 <p>
 </p>
@@ -1002,7 +1067,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="endpoints-DELETEapi-v1-users--id-">Remove the specified resource from storage.</h2>
+                    <h2 id="managing-users-DELETEapi-v1-users--id-">Delete user</h2>
 
 <p>
 </p>
@@ -1122,7 +1187,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="endpoints-PATCHapi-v1-users--user_id-">Update the specified resource in storage.</h2>
+                    <h2 id="managing-users-PATCHapi-v1-users--user_id-">Update user</h2>
 
 <p>
 </p>
