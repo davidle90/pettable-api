@@ -32,7 +32,7 @@ class PetResource extends JsonResource
                 'user' => UserResource::collection($this->whenLoaded('owner')),
             ],
             'links' => [
-                'self' => route('pets.show', ['pet' => $this->reference_id])
+                'self' => route('pets.show', ['reference_id' => $this->reference_id])
             ]
         ];
     }

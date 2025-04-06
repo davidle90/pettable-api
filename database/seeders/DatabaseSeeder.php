@@ -40,8 +40,8 @@ class DatabaseSeeder extends Seeder
             [
                 'reference_id' => 'TestPet3',
                 'name' => 'Clarimon',
-                'hunger' => 25,
-                'happiness' => 67,
+                'hunger' => 15,
+                'happiness' => 71,
                 'energy' => 59,
                 'is_alive' => true,
             ],
