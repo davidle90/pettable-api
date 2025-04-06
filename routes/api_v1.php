@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\UserController;
 
 Route::get('pets', [PetController::class, 'index']);
-Route::get('pets/{reference_id}', [PetController::class, 'show']);
+Route::get('pets/{reference_id}', [PetController::class, 'show'])->name('pets.show');
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('users', UserController::class)->except(['update']);
