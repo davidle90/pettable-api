@@ -67,20 +67,20 @@ class DatabaseSeeder extends Seeder
                 'reference_id' => 'AU123',
                 'name' => 'Admin',
                 'email' => 'admin@example.com',
-                'password' => 'password',
                 'is_admin' => true,
             ],
             [
                 'reference_id' => 'TU456',
                 'name' => 'Test User',
                 'email' => 'test@example.com',
-                'password' => 'password',
                 'is_admin' => false,
             ]
         ];
 
         foreach ($users as $user) {
-            User::firstOrCreate(['reference_id' => $user['reference_id']], $user);
+            if(!User::where('reference_id', $user['reference_id'])->exists()){
+                User::factory()->create($user);
+            }
         }
     }
 }
